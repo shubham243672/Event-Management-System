@@ -3,22 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Advanced Event Management System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .event-panel {
+      margin: 20px 0;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      padding: 8px 16px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello World with Shubham Rajwar</h1>
-  <h2>Event Management System</h2>
-  <button id="btn-1">Create Event</button>
-  <button id="btn-2">Terminate Event</button>
-  <script>
-    const btn_1=document.getElementById('btn-1');
-    btn_1.addEventListener('click',()=>{
-      alert("Event Created");
-    });
+  <h1>Event Management System</h1>
+  <h2>Welcome, Shubham Rajwar</h2>
+  
+  <div class="event-panel">
+    <h3>Event Controls</h3>
+    <button id="btn-create">Create Event</button>
+    <button id="btn-terminate">Terminate Event</button>
+    <button id="btn-list">List Events</button>
+  </div>
 
-    const btn_2=document.getElementById('btn-2');
-    btn_2.addEventListener('click',()=>{
-      alert("Event Terminated");
+  <div id="events-container" class="event-panel">
+    <h3>Active Events</h3>
+    <ul id="events-list"></ul>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const events = [];
+      const createBtn = document.getElementById('btn-create');
+      const terminateBtn = document.getElementById('btn-terminate');
+      const listBtn = document.getElementById('btn-list');
+      const eventsList = document.getElementById('events-list');
+
+      createBtn.addEventListener('click', () => {
+        const eventName = prompt("Enter event name:");
+        if (eventName) {
+          events.push(eventName);
+          updateEventsList();
+          alert(`Event "${eventName}" created successfully!`);
+        }
+      });
+
+      terminateBtn.addEventListener('click', () => {
+        if (events.length === 0) {
+          alert("No events to terminate!");
+          return;
+        }
+        const eventName = events.pop();
+        updateEventsList();
+        alert(`Event "${eventName}" terminated!`);
+      });
+
+      listBtn.addEventListener('click', () => {
+        updateEventsList();
+        alert(`Total events: ${events.length}\n\n${events.join('\n')}`);
+      });
+
+      function updateEventsList() {
+        eventsList.innerHTML = events.map(event => 
+          `<li>${event} <button class="remove-btn">Remove</button></li>`
+        ).join('');
+        
+        document.querySelectorAll('.remove-btn').forEach((btn, index) => {
+          btn.addEventListener('click', () => {
+            events.splice(index, 1);
+            updateEventsList();
+          });
+        });
+      }
     });
   </script>
 </body>

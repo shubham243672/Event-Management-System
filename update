@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Event Management System</h1>
+            <p>Manage and track all your events in one place</p>
+        </header>
+
+        <main>
+            <section class="add-event">
+                <h2>Add New Event</h2>
+                <form id="event-form">
+                    <div class="form-group">
+                        <label for="event-name">Event Name:</label>
+                        <input type="text" id="event-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event-date">Date:</label>
+                        <input type="date" id="event-date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event-time">Time:</label>
+                        <input type="time" id="event-time" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event-location">Location:</label>
+                        <input type="text" id="event-location" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event-description">Description:</label>
+                        <textarea id="event-description" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event-capacity">Capacity:</label>
+                        <input type="number" id="event-capacity" min="1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="event-price">Ticket Price ($):</label>
+                        <input type="number" id="event-price" min="0" step="0.01">
+                    </div>
+                    
+                    <button type="submit" class="btn">Add Event</button>
+                </form>
+            </section>
+
+            <section class="event-list">
+                <h2>Upcoming Events</h2>
+                <div class="filter-controls">
+                    <input type="text" id="search-events" placeholder="Search events...">
+                    <select id="sort-events">
+                        <option value="date-asc">Date (Ascending)</option>
+                        <option value="date-desc">Date (Descending)</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                    </select>
+                </div>
+                
+                <div id="events-container">
+                    <!-- Events will be dynamically added here -->
+                    <p class="no-events">No events added yet. Add your first event above!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Event Management System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

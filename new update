@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Event Management System</h1>
+            <p>Manage and track all your events in one place</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Upcoming Events</a></li>
+                    <li><a href="#">Past Events</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="add-event">
+                <h2>Add New Event</h2>
+                <form id="event-form">
+                    <div class="form-group">
+                        <label for="event-name">Event Name:</label>
+                        <input type="text" id="event-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date">Date:</label>
+                        <input type="date" id="event-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-time">Time:</label>
+                        <input type="time" id="event-time" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="event-location">Location:</label>
+                        <input type="text" id="event-location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-category">Category:</label>
+                        <select id="event-category">
+                            <option value="conference">Conference</option>
+                            <option value="workshop">Workshop</option>
+                            <option value="concert">Concert</option>
+                            <option value="exhibition">Exhibition</option>
+                            <option value="sports">Sports</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description">Description:</label>
+                        <textarea id="event-description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-capacity">Capacity:</label>
+                        <input type="number" id="event-capacity" min="1">
+                    </div>      
+                    <div class="form-group">
+                        <label for="event-price">Ticket Price ($):</label>
+                        <input type="number" id="event-price" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-image">Event Image:</label>
+                        <input type="file" id="event-image" accept="image/*">
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label>Options:</label>
+                        <div>
+                            <input type="checkbox" id="event-featured">
+                            <label for="event-featured">Featured Event</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="event-registration">
+                            <label for="event-registration">Requires Registration</label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Add Event</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </section>
+            <section class="event-list">
+                <div class="section-header">
+                    <h2>Upcoming Events</h2>
+                    <div class="filter-controls">
+                        <input type="text" id="search-events" placeholder="Search events...">
+                        <select id="filter-category">
+                            <option value="all">All Categories</option>
+                            <option value="conference">Conference</option>
+                            <option value="workshop">Workshop</option>
+                            <option value="concert">Concert</option>
+                            <option value="exhibition">Exhibition</option>
+                            <option value="sports">Sports</option>
+                        </select>
+                        <button id="sort-date" class="btn btn-small">Sort by Date</button>
+                    </div>
+                </div>
+                <div id="events-container">
+                    <!-- Sample event card (would be generated dynamically in a real app) -->
+                    <div class="event-card featured">
+                        <div class="event-image">
+                            <img src="https://via.placeholder.com/300x200" alt="Event Image">
+                            <span class="featured-badge">Featured</span>
+                        </div>
+                        <div class="event-details">
+                            <h3 class="event-title">Tech Conference 2025</h3>
+                            <div class="event-meta">
+                                <span class="event-date">May 15, 2025</span>
+                                <span class="event-time">09:00 AM</span>
+                                <span class="event-location">Convention Center</span>
+                            </div>
+                            <p class="event-description">Annual technology conference featuring the latest innovations in software development and AI.</p>
+                            <div class="event-stats">
+                                <span class="capacity">Capacity: 500</span>
+                                <span class="price">$199.00</span>
+                            </div>
+                            <div class="event-actions">
+                                <button class="btn btn-small">Edit</button>
+                                <button class="btn btn-small btn-danger">Delete</button>
+                                <button class="btn btn-small btn-success">View Attendees</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="https://via.placeholder.com/300x200" alt="Event Image">
+                        </div>
+                        <div class="event-details">
+                            <h3 class="event-title">Art Exhibition Opening</h3>
+                            <div class="event-meta">
+                                <span class="event-date">June 2, 2025</span>
+                                <span class="event-time">06:00 PM</span>
+                                <span class="event-location">City Art Gallery</span>
+                            </div>
+                            <p class="event-description">Opening night for the new contemporary art exhibition featuring local artists.</p>
+                            <div class="event-stats">
+                                <span class="capacity">Capacity: 200</span>
+                                <span class="price">Free</span>
+                            </div>
+                            <div class="event-actions">
+                                <button class="btn btn-small">Edit</button>
+                                <button class="btn btn-small btn-danger">Delete</button>
+                                <button class="btn btn-small btn-success">View Attendees</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="no-events">No more events to show. Add a new event above!</p>
+                </div>
+                <div class="pagination">
+                    <button class="btn btn-small" disabled>Previous</button>
+                    <span class="page-info">Page 1 of 1</span>
+                    <button class="btn btn-small" disabled>Next</button>
+                </div>
+            </section>
+            <section class="stats-section">
+                <h2>Event Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Events</h3>
+                        <p class="stat-value">24</p>
+                        <p class="stat-change">+5 from last month</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Upcoming Events</h3>
+                        <p class="stat-value">8</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Attendees</h3>
+                        <p class="stat-value">1,245</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Revenue</h3>
+                        <p class="stat-value">$24,580</p>
+                    </div>
+                </div>
+            </section>
+            <section class="calendar-view">
+                <h2>Calendar View</h2>
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <button class="btn btn-small">&lt;</button>
+                        <h3>July 2025</h3>
+                        <button class="btn btn-small">&gt;</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-weekdays">
+                            <div>Sun</div>
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+                        </div>
+                        <div class="calendar-days">
+                            <div class="empty-day"></div>
+                            <div class="empty-day"></div>
+                            <div class="calendar-day">
+                                <div class="day-number">1</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">2</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">3</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">4</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">5</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">6</div>
+                                <div class="calendar-event">Tech Meetup</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">7</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">8</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">9</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">10</div>
+                                <div class="calendar-event">Workshop</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">11</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">12</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">13</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">14</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">15</div>
+                                <div class="calendar-event">Conference</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">16</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">17</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">18</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">19</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">20</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">21</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">22</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">23</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">24</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">25</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">26</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">27</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">28</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">29</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">30</div>
+                            </div>
+                            <div class="calendar-day">
+                                <div class="day-number">31</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>The Event Management System helps organizations plan, organize, and execute successful events with ease.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@eventmanager.com</p>
+                    <p>Phone: (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Event Management System. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><span class="social-icon">FB</span></a>
+                    <a href="#"><span class="social-icon">TW</span></a>
+                    <a href="#"><span class="social-icon">IG</span></a>
+                    <a href="#"><span class="social-icon">LI</span></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
